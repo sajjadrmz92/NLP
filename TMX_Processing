@@ -1,0 +1,51 @@
+from tmx2dataframe import tmx2dataframe
+import pandas as pd
+
+
+metadata, df = tmx2dataframe.read("root.tmx")
+df.to_pickle('sajjad.pkl')
+
+df1 = pd.read_pickle('sajjad.pkl')
+
+list_en = []
+list_fa = []
+for source, target in zip(df['source_sentence'], df['target_sentence']):
+    list_en.append(source.strip().replace('\r\n', '').replace('\n', '').replace('<span>' , '').replace('/span' , '').replace('<>' , '').replace('<a>', ''))
+    list_fa.append(target.strip().replace('\r\n', '').replace('\n', '').replace('<span>' , '').replace('/span' , '').replace('<>' , '').replace('<a>', ''))
+    
+print(len(list_en))
+print(len(list_fa))
+
+
+list_en1 = []
+list_fa1 = []
+for source, target in zip(list_en,list_fa):
+    a=re.sub('<.*>' , '', source)
+    list_en1.append(a.strip())
+    list_fa1.append(re.sub('<.*>' , '' , target))
+print(len(list_en1))
+print(len(list_fa1))
+
+
+# list_en1 = []
+list_fa2 = []
+list_en2 = []
+for source ,  target in zip(list_en1 , list_fa1):
+      list_en2.append(re.sub('•	' , '', source))
+      a=re.sub('[a-zA-Z]' , '' , target)
+      b=re.sub('•	' , '' , a)
+      list_fa2.append(a.strip())
+print(len(list_en2))
+print(len(list_fa2))
+
+
+with open("file.en", "w") as fileen:
+    if list_en2!='':
+        fileen.write("\n".join(list_en2))
+fileen.close()
+
+with open("file.fa", "w") as filefa:
+    if list_fa2!='':
+    
+        filefa.write("\n".join(list_fa2))
+filefa.close()
