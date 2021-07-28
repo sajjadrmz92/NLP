@@ -1,0 +1,11 @@
+import re
+with open('inputefile.txt'  , 'r' , encoding= "utf-8") as in_file :
+    input_lines = in_file.readlines()
+tmplist = []
+for line in input_lines:
+    tmp = re.sub('[<0-9/>]' , '', line)
+    tmplist.append(tmp.strip())
+with open('output.fa' , 'w') as outputfa:
+    for lst in tmplist:
+        outputfa.write(lst + '\n')
+outputfa.close()
