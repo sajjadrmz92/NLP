@@ -1,0 +1,29 @@
+import random
+import numpy as np
+
+def selectline(enfile , fafile , number_select):
+    
+    enlines = enfile.readlines()
+    falines = fafile.readlines()
+    Set = set(range(len(enlines)))
+    
+    with open('id4050' , 'w') as id1020:
+        
+#         for i in range(number_select):
+
+        sample0 = random.sample(list(Set), k =number_select )
+        sample1 = set(sample0) 
+        print(len(sample1))  
+        
+        for item in sample1:
+                id1020.write(str(item) + '\n')
+            
+            
+        
+    with open('final4050.en' , 'w') as x , open('final4050.fa' , 'w') as y:
+        for j in range(len(sample1)):
+            x.write(enlines[j])
+            y.write(falines[j])
+            
+    x.close()
+    y.close()
