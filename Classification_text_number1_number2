@@ -1,0 +1,13 @@
+# select text line with len in number1 <len< number2
+
+def line_len_select(in_en , in_fa , number1 , number2):
+    with open('200300.en', 'w') as selecten , open('200300.fa' , 'w') as selectfa:
+        in_en_lines = in_en.readlines()
+        in_fa_lines = in_fa.readlines()
+        for line in range(len(in_en_lines)):
+                if len(in_en_lines[line].split())>=number1 and len(in_en_lines[line].split())<number2:
+                    selecten.write(in_en_lines[line])
+                    selectfa.write(in_fa_lines[line])
+                    
+                    
+    
