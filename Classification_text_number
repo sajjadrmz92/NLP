@@ -1,0 +1,14 @@
+# select text line with 10 word or upper
+
+def select_line(fileen, filefa):
+    
+    with open('selecten' , 'w') as new_en , open('selectfa' , 'w') as new_fa:
+        fileen_lines = fileen.readlines()
+        filefa_lines = filefa.readlines()
+        
+        for line in range(len(fileen_lines)):
+            if len(fileen_lines[line].split()) >=10:
+                new_en.write(fileen_lines[line])
+                new_fa.write(filefa_lines[line])
+    new_en.close()
+    new_fa.close()
