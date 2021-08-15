@@ -27,3 +27,7 @@ def selectline(enfile , fafile , number_select):
             
     x.close()
     y.close()
+
+
+with open('4050.en' , 'r') as en , open('4050.fa' , 'r') as fa:
+    selectline(en , fa , 1760)
