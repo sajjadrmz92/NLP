@@ -11,3 +11,7 @@ def line_len_select(in_en , in_fa , number1 , number2):
                     
                     
     
+with open('selecten' , 'r') as fileen , open('selectfa' , 'r') as filefa:
+    line_len_select(fileen , filefa , 200 ,300)
+    
+    
