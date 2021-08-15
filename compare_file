@@ -1,0 +1,15 @@
+with open('selecten' , 'r') as mainen , open('selectfa' , 'r') as mainfa , open('vru.en' , 'r') as vruen , open('vru.fa' , 'r') as vrufa , open('check.en' , 'w') as checken , open('check.fa' , 'w') as checkfa:
+    
+    en_lines = mainen.readlines()
+    fa_lines = mainfa.readlines()
+    
+    vruen_lines = vruen.readlines()
+    vrufa_lines = vrufa.readlines()
+    
+    for i in range(len(en_lines)):
+        
+        if not en_lines[i] in vruen_lines:
+            checken.write(en_lines[i])
+            checkfa.write(fa_lines[i])
+    checken.close()
+    checkfa.close()        
